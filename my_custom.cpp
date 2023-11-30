@@ -41,6 +41,7 @@ void custom_every_5seconds() {
 void custom_loop() {
     // Non-blocking code here, this should execute very fast!
     uint8_t hasp_sleep_state = hasp_get_sleep_state();
+    char numberArray[20];
     if(last_hasp_sleep_state != hasp_sleep_state) {
         itoa(hasp_sleep_state,numberArray,10);
         dispatch_state_subtopic("sleep_state",numberArray);
@@ -52,8 +53,7 @@ void custom_loop() {
                 haspDevice.set_backlight_level(32);
             break;
             case 2:
-                //haspDevice.set_backlight_power(false);
-                //delay(500);
+                // Kind of goes without saying to uncomment this when ready for prime time :D
                 //esp_deep_sleep_start();
             break;
         }
